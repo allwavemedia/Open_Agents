@@ -1,6 +1,6 @@
 import { Plugin } from '@/types/plugin';
 
-import { OpenAIModel } from './openai';
+import { OpenAgent } from './agent';
 
 export interface Message {
   id: number | null;
@@ -36,7 +36,6 @@ export type RichContentItemType =
   | 'echarts'
   | 'evaluation_result'
   | 'image'
-  | 'pdf'
   | 'table'
   | 'file_upload_result'
   | 'kaggle_connect'
@@ -45,7 +44,7 @@ export type RichContentItemType =
   | 'html';
 
 export interface ChatBody {
-  model: OpenAIModel;
+  agent: OpenAgent;
   messages: Message[];
   key: APIKey;
   prompt: string;
@@ -56,7 +55,7 @@ export interface Conversation {
   id: string | null;
   name: string;
   messages: Message[];
-  model: OpenAIModel;
+  agent: OpenAgent;
   prompt: string;
   temperature: number;
   folderId: string | null;
